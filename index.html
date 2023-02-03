@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Etch-a-Sketch</title>
+</head>
+<body>
+    <h1>Etch-a-Sketch</h1>
+    <div class="container">
+        <main>
+            <div class="sidebar">
+                <div>
+                    <h3>Select the range</h3 >
+                    <input type="range" name="range" id="dimension" min="2" max="50" value="2">
+                </div>
+                <div>
+                    <h4>Create Grid</h4>
+                    <button class="btn"id="create">CREATE</button>
+                </div>
+                <div>
+                    <h4>Clear Grid</h4>
+                    <button  class="btn"id="clear">CLEAR</button>
+                </div>
+                <div>
+                    <h4>Reset Grid</h4>
+                    <button class="btn"id="reset">RESET</button>
+                </div>    
+            </div>
+            <div id="grid-container">
+                
+            </div>
+        </main>
+    </div>
+    <footer>
+        ©copyright @<a href="http://www.github.com/Vice-108">Vice-108</a> 
+    </footer>
+    <script src="./main.js" defer></script>
+</body>
+</html>

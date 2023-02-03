@@ -1,0 +1,80 @@
+@use 'partial'
+@mixin flexbox($dir: row,$jcdir:center,$aldir:center,$gap:0, $wrap:no-wrap)
+    display: flex
+    flex-direction: $dir
+    justify-content: $jcdir
+    align-items: $aldir
+    gap:$gap
+    flex-wrap: $wrap
+    align-content: flex-start
+    
+body
+    background-color: grey
+h1
+    text-align: center
+.container
+    @include flexbox($jcdir:center,$aldir:center,)
+main
+    @include flexbox($gap:5em)
+
+    margin-top: 50px
+    #grid-container
+        width: 500px
+        height: 500px
+        background-color: white
+        border: 1px solid black
+        @include flexbox($jcdir:"",$aldir:"", $wrap:wrap)
+        .cell
+            // border: 1px solid black
+            // border-top-color: white
+            // border-left-color: white
+            display: inline-block
+    .sidebar
+        width: 200px
+        height: 400px
+        background-color: blue
+        border-radius: 25px
+        text-align: center
+        @include flexbox($dir:column,$aldir:center,$gap:1rem,$jcdir:center)
+        &.btn
+            border-radius: 5px
+            // border-color:black
+            outline:none
+footer
+    position: fixed
+    left: 0
+    bottom: 0
+    width: 100%
+    color: white
+    text-align: center
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
