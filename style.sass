@@ -1,45 +1,71 @@
 @use 'partial'
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&display=swap')
 @mixin flexbox($dir: row,$jcdir:center,$aldir:center,$gap:0, $wrap:no-wrap)
     display: flex
     flex-direction: $dir
     justify-content: $jcdir
     align-items: $aldir
-    gap:$gap
+    gap: $gap
     flex-wrap: $wrap
     align-content: flex-start
-    
+
+$h1color: #FFC93C
+$bgcolor: #0081C9
+$sbcolor: #86E5FF
+$btncolor: #5BC0F8
+
 body
-    background-color: grey
-h1
+    background-color: $bgcolor
+
+p
     text-align: center
+    font-family: 'IBM Plex Serif', serif
+    font-size: 3em
+    font-weight: 600
+    color: $h1color
+    text-decoration: underline
+    text-decoration-color: $btncolor
+
+        
+
 .container
-    @include flexbox($jcdir:center,$aldir:center,)
+    @include flexbox($jcdir:center,$aldir:center)
+
 main
     @include flexbox($gap:5em)
-
     margin-top: 50px
+        
+    #colors
+        height: 100px
+        width: 100px
+
     #grid-container
-        width: 500px
-        height: 500px
+        width: 350px
+        height: 350px
         background-color: white
-        border: 1px solid black
+        border: 1px solid #000000
         @include flexbox($jcdir:"",$aldir:"", $wrap:wrap)
         .cell
-            // border: 1px solid black
+            border: 1px solid grey
             // border-top-color: white
             // border-left-color: white
             display: inline-block
     .sidebar
+        @include flexbox($dir:column,$jcdir:space-evenly,$aldir:center)
         width: 200px
         height: 400px
-        background-color: blue
+        background-color: $sbcolor
         border-radius: 25px
         text-align: center
-        @include flexbox($dir:column,$aldir:center,$gap:1rem,$jcdir:center)
-        &.btn
-            border-radius: 5px
-            // border-color:black
-            outline:none
+        .btn
+            width: 125px
+            height: 30px
+            font-size: 1em
+            font-weight: medium
+            border-radius: 15px
+            border-color: #c0b0b0
+            background-color: $btncolor
+
 footer
     position: fixed
     left: 0
@@ -48,33 +74,21 @@ footer
     color: white
     text-align: center
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media screen and ( max-width:800px)
+    p    
+        font-size: 30px
+    main
+        @include flexbox($dir:column-reverse, $gap:3em)
+        .sidebar
+            border-radius: 10px
+        #grid-container
+            width: 350px
+            height: 350px
+    footer
+        position: relative
+        padding-top: 3em
+        left: 0
+        bottom: 0
+        width: 100%
+        color: white
+        text-align: center

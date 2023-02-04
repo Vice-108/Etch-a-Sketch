@@ -1,5 +1,15 @@
 const range = document.getElementById("dimension");
 const create = document.getElementById("create");
+range.addEventListener('onchange',()=>{
+  const gridnxn=document.getElementById("nxn");
+  gridnxn.textContent=`${range.value}x${range.value}`
+})
+let currentColor;
+function getcolor(){
+  const defaultColor= document.getElementById("colors");
+  currentColor= defaultColor.value
+  return currentColor
+}
 create.addEventListener("click", creategrid);
 //function to create a NxN grid consist of N^2 cells.
 function creategrid() {
@@ -13,7 +23,7 @@ function creategrid() {
       ++count;
       cell.classList.add("cell");
       cell.setAttribute("id", `${count}`);
-      let dim = 498 / dimension;
+      let dim = 348 / dimension;
       cell.style.width = `${dim}px`;
       cell.style.height = `${dim}px`;
       grid.appendChild(cell);
@@ -22,8 +32,16 @@ function creategrid() {
   //Adding the effect if hover hat change color of cell.
   for (let i = 1; i <= dimension ** 2; i++) {
     const currentCell = document.getElementById(i);
-    currentCell.addEventListener("mouseover", () => {
-      currentCell.style.backgroundColor = "red";
+    currentCell.addEventListener("mousedown", (e) => {
+      
+      currentCell.style.backgroundColor = getcolor();
+      if(e.button==2){
+        currentCell.addEventListener('contextmenu', (ev)=>{
+          console.log("Right click disabled");
+          ev.preventDefault(); // this will prevent browser default behavior 
+          currentCell.style.backgroundColor = "white";
+        });
+      }
     });
   }
   // An Event to clear the cell background color.
